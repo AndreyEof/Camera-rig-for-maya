@@ -1,3 +1,7 @@
+### Script for sequential processing of files .ma The script opens the scene, 
+### adjusts the quality of the viewport for a presentable look, starts the playblast 
+### and waits for completion. Next, it starts the next scene to repeat the action.
+
 import maya.cmds as mc
 import maya.mel as mel
 import os
