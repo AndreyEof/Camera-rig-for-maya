@@ -35,20 +35,20 @@ def createShader(filePath):
 	CreateUV(planeName[0])
 
 def CreateUV(planeName):
-	print "plane name =", planeName
+	print( "plane name =", planeName )
 	mc.select(planeName, r=True)
 	mc.hilite(planeName) 
 	mc.selectMode(component=True)
 	mc.select((planeName + '.f[0]'), r=True)
 	UV = mc.polyProjection((planeName + '.f[0]'), ch=0, type='Planar', ibd=True, kir=False, md='y')
-	print "++++", UV
+	print( "++++", UV )
 	mc.selectMode (object=True)
 
 def createPlane(size):
 	planeName = mc.polyPlane( w=size[0], h=size[1], sx=1, sy=1, ax=[0, 1, 0], cuv=2, ch=0 )
-	return planeName
+	return( planeName )
 # Get image size
-def sizeImages(path):
+def sizeImages( path ):
     img = om.MImage()
     img.readFromFile(path)
     
@@ -59,22 +59,22 @@ def sizeImages(path):
     widthPtr = widthUtil.asUintPtr()
     heightPtr = heightUtil.asUintPtr()
     
-    img.getSize(widthPtr, heightPtr)
+    img.getSize( widthPtr, heightPtr )
     
-    width = util.getUint(widthPtr)
-    height = util.getUint(heightPtr)
-    print "===", (width, height)
-    return (width, height)
+    width = util.getUint( widthPtr )
+    height = util.getUint( heightPtr )
+    print( "===", ( width, height ) )
+    return( ( width, height ) )
 
 def Path():
 	try:
 		OpenFile = open('c:\\temp\\path_for_plugin_in_maya.txt', 'r')
 		path_file = OpenFile.read()
 		OpenFile.close()
-		if (path_file != True): print "none path"
+		if (path_file != True): print( "none path" )
 	except:
 		path_file = "none path"
-	return (path_file)
+	return( path_file )
 
 def btf1(*args):
 	filename = mc.fileDialog2(fileMode=1, caption="Import Image")
